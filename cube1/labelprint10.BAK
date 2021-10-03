@@ -1,0 +1,76 @@
+#singleinstance ignore
+
+settitlematchmode,2
+sleep,100
+run,C:\Program Files\Hidemaru\Hidemaru.exe
+
+sleep,100
+
+WinWait, - GŠÛ, 
+IfWinNotActive, - GŠÛ, , WinActivate, - GŠÛ, 
+WinWaitActive, - GŠÛ, 
+
+sleep,500
+
+
+{
+
+formattime,weekd,,(ddd)
+
+clipboard_backup = %ClipboardAll%
+clipboard=
+temp =-------2‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ü‚µ‚½B------`n`n
+temp =%temp%                 %A_YYYY%`/%a_mon%`/%a_mday%%weekd%`n`n
+
+temp =%temp%	ƒ^ƒXƒN‚ğ’Ç‰Á‚·‚é`n`n`n
+temp =%temp%@@QQQQQQQQQQQQQQQQQQ`n`n
+temp =%temp%¨@‚Ç‚±‚Ö`n`n
+temp =%temp% ƒO[ƒOƒ‹ƒJƒŒƒ“ƒ_[@@ ƒ^ƒXƒNƒVƒ…[ƒg`n`n
+temp =%temp% ƒŠƒ}ƒCƒ“ƒ_[@@@@@ Œv‘ª–ì’ `n`n
+temp =%temp% ƒ^ƒXƒNƒ{[ƒhicopiedƒJƒXƒ^ƒ€ƒL[ƒ{[ƒhj`n`n
+temp =%temp% è’ @@@@@@@@@ ƒŠƒ\[ƒXƒJ[ƒh`n`n
+temp =%temp% ‚»‚Ì‘¼`n`n`n
+temp =%temp%Œ©Ï‚à‚èŠÔQQQQQQQQQQQQ`n`n
+temp =%temp%@@@@ @`n`n
+temp =%temp%@@@@@i@@@@@@@@@@@@@j`n`n
+temp =%temp%@@@@¦QQQQQQQQQQQQQQ`n`n`n
+temp =%temp%—\’è“ú@@@@@Œ@@@“ú@@@F`n`n`n
+
+if(A_Hour>=12)
+{
+	ampm=pm
+	jikan:=a_hour-12
+	}
+	else
+	{
+	ampm=am
+	jikan:=a_hour
+	}
+
+
+temp =%temp%				%ampm%  * %jikan%`:%a_Min% * 
+
+
+
+sleep,100
+
+clipboard := temp
+
+send,^v
+
+sleep,100
+
+send,^p
+
+sleep,400
+
+send,{enter}
+
+sleep,500
+
+send,!{f4}
+sleep,300
+send,n
+
+return
+}

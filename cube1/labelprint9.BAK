@@ -1,0 +1,82 @@
+#singleinstance ignore
+
+settitlematchmode,2
+sleep,100
+run,C:\Program Files\Hidemaru\Hidemaru.exe
+
+sleep,100
+
+WinWait, - 秀丸, 
+IfWinNotActive, - 秀丸, , WinActivate, - 秀丸, 
+WinWaitActive, - 秀丸, 
+
+sleep,500
+
+
+{
+
+formattime,weekd,,(ddd)
+
+clipboard_backup = %ClipboardAll%
+clipboard=
+temp =-------1ボタンが押されました。------`n
+temp =%temp%               　　　  %A_YYYY%`/%a_mon%`/%a_mday%%weekd%`n`n
+temp =%temp%リソースを記入します。`n`n
+temp =%temp%    　換喩パワーアップ！（タグ重要度レベルUP）`n`n
+temp =%temp%    □リマインダー`n
+temp =%temp%    □Googleカレンダー（イベント）`n　　
+temp =%temp%    □copied カスタムキーボード`n
+temp =%temp%    □コピーセンター　カスタムキーボード`n
+temp =%temp%    □copied 履歴タスク（タスクボード）`n
+temp =%temp%    □タスクシュート`n
+temp =%temp%    □ふせん`n
+temp =%temp%    `n
+temp =%temp%    ☆新規リソース`n`n
+temp =%temp%　　　　□　`n`n
+temp =%temp%　　　　　（　　　　　　　　　　）`n`n
+temp =%temp%　　　　　関連リソース`n`n`n
+temp =%temp%　　　　※＿＿＿＿＿＿＿＿＿＿＿＿＿＿`n`n`n
+temp =%temp%　　　　※＿＿＿＿＿＿＿＿＿＿＿＿＿＿`n`n`n
+temp =%temp%　　　　　※関連事項`n`n`n
+temp =%temp%　　　　※＿＿＿＿＿＿＿＿＿＿＿＿＿＿`n`n`n
+
+temp =%temp%　　　　　　　　　　　  　　　□　全チェック`n
+if(A_Hour>=12)
+{
+	ampm=pm
+	jikan:=a_hour-12
+	}
+	else
+	{
+	ampm=am
+	jikan:=a_hour
+	}
+
+
+temp =%temp%		%ampm%  * %jikan%`:%a_Min% * 
+
+
+
+
+sleep,100
+
+clipboard := temp
+
+send,^v
+
+sleep,400
+
+send,^p
+
+sleep,400
+
+send,{enter}
+
+sleep,500
+
+send,!{f4}
+sleep,300
+send,n
+
+return
+}
